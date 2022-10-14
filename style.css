@@ -1,0 +1,659 @@
+@import url('https://fonts.googleapis.com/css2?family=Fira+Sans:ital,wght@0,400;1,300&display=swap');
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    text-decoration: none;    
+}
+html{
+    scroll-behavior: smooth;
+}
+.max-width{
+    max-width: 1300px;
+    padding: 0 80px;
+    margin: auto;
+}
+/* navbar  inicio */
+.navbar{
+
+    position: fixed;
+    width: 100%;
+    padding: 15px 0;
+    font-family: 'Fira Sans', sans-serif;
+    transition: all 0.3s ease;  
+    z-index: 999;    
+}
+.navbar.sticky{
+    background: rgba(255, 192, 227, 0.897);
+    padding: 15px 0;
+}
+.navbar .max-width{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.navbar .logo a{
+    color: #fff;
+    font-size: 35px;
+    font-weight: 500;
+}
+.navbar .logo a span{
+    color: rgba(255, 192, 227, 0.897);
+    font-size: 35px;
+    font-weight: 500;
+}
+.navbar.sticky .logo a span{
+    color: #fff;
+    transition: all 0.3s ease;
+}
+.navbar .menu li{
+    list-style: none;
+    display: inline-block;
+}
+.navbar .menu li a{
+    color: #fff;
+    font-size: 18px;
+    font-weight: 500px;
+    margin-left: 25px;
+    transition: color 0.3s ease;
+}
+.navbar .menu li a:hover{
+    color: rgba(255, 192, 227, 0.897);
+}
+.navbar.sticky .menu li a:hover{
+    color: #fff;
+}
+/* home inicio */
+.home{
+    display: flex;
+    background: url(image/violet.jpg);
+    height: 100vh;
+    color: #fff;
+    min-height: 500px;
+    font-family: 'Fira Sans', sans-serif;
+}
+.home .max-width{
+    margin: auto 0 auto 40px;    
+}
+.home .home-content .text-1{
+    font-size: 30px;
+}
+.home .home-content .text-2{
+    font-size: 75px;
+    font-weight: 500;
+    margin-left: -3px;
+}
+.home .home-content .text-3{
+    font-size: 45px;
+    font-weight: 1000;
+    margin: 5px 0;    
+}
+.home .home-content a{
+    display: inline-block;
+    background: rgba(245, 168, 210, 0.897);
+    color: #fff;
+    font-size: 25px;
+    padding: 10px 30px;
+    margin-top: 10px;
+    border-radius: 8px;
+    border: 2px solid rgba(245, 168, 210, 0.897);
+}
+.home .home-content a:hover{
+    color: rgba(245, 168, 210, 0.897);
+    background: none;
+    transition: all 0.3s ease;
+}
+.home .home-content .text-3 span{
+    color:rgba(245, 168, 210, 0.897);
+}
+/*inicio menu botao*/
+.botao-menu{
+    color:#fff;
+    font-size: 25px;
+    cursor: pointer;
+    display: none;
+}
+.botao-scroll-up{
+    font-size: 70px;
+    position: fixed;
+    width: 45px;
+    height: 50px;
+    right: 30px;
+    bottom: 30px;
+    text-align: center;
+    line-height: 45px;
+    color: rgba(245, 168, 210, 0.897);
+    background: none;
+    z-index: 999;
+    cursor: pointer;
+    opacity: 0;
+    pointer-events: none;
+    transition: all 0.3s ease;
+}
+.botao-scroll-up.show{
+    opacity: 1;
+    pointer-events: auto;
+    bottom: 30px;
+}
+/*inicio sessão sobre*/
+section{
+    padding: 100px 0;
+}
+.sobre{
+    font-family: 'Times New Roman', Times, sans-serif;
+}
+.sobre .sobre-content, .hobbies .hobbies-content, .habilidades .habilidades-content, .projetos{
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+}
+.sobre .title{
+    font-family: 'Fira Sans', sans-serif;
+    text-align: center;
+    font-size: 50px;
+    font-weight: 500;
+    margin-bottom: 60px;
+    padding-bottom: 20px;
+    position: relative;
+}
+.sobre .title::before{
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    background: #111;
+    width: 240px;
+    height: 3px;
+    transform: translateX(-50%);
+}
+.sobre .title::after{
+    content: "Quem sou eu";
+    position: absolute;
+    bottom: -16px;
+    left: 50%;
+    font-size: 25px;
+    background: #fff;
+    color: rgba(245, 168, 210, 0.897);
+    padding: 5px;
+    transform: translateX(-50%);
+}
+.sobre .sobre-content .left{
+    width: 45%;
+}
+.sobre .sobre-content .right{
+    width: 55%;
+}
+.sobre .sobre-content .right .text{
+    font-size: 35px;
+    font-weight: 500;
+    margin-bottom: 10px;
+    font-family: 'Fira Sans', sans-serif;
+}
+.sobre .sobre-content .right .text span{
+    color: rgba(245, 168, 210, 0.897);
+    font-family: 'Fira Sans', sans-serif;
+}
+.sobre .sobre-content .right p{
+    text-align: justify;
+    font-size: 17px;
+    font-family: 'Fira Sans', sans-serif;
+}
+.sobre .sobre-content .right a{
+    display: inline-block;
+    background: rgba(245, 168, 210, 0.897);
+    color: #fff;
+    font-family: 'Fira Sans', sans-serif;
+    font-size: 25px;
+    padding: 10px 30px;
+    margin-top: 10px;
+    border-radius: 8px;
+    border: 2px solid rgba(245, 168, 210, 0.897);
+}
+.sobre .sobre-content .right a:hover{
+    color: rgba(245, 168, 210, 0.897);
+    background: none;
+    transition: all 0.3s ease;
+}
+.sobre .sobre-content .left img{
+    width: 400px;
+    height: 500px;
+    object-fit: cover;
+    border-radius: 10px;
+    
+}
+/* inicio hobbies */
+.hobbies, .projetos{
+    background:#111;
+}
+.hobbies .hobbies-content, .projetos{
+    color: #fff;
+}
+.hobbies .title, .projetos .title{
+    font-family: 'Fira Sans', sans-serif;
+    text-align: center;
+    font-size: 50px;
+    font-weight: 500;
+    margin-bottom: 60px;
+    padding-bottom: 20px;
+    position: relative;
+    color: #fff;
+}
+.hobbies .hobbies-content .card .box p{
+    font-size: 15px;
+    font-family: 'Fira Sans', sans-serif;
+}
+.hobbies .title::after, .projetos .title::after{
+    content: "Meus Hobbies";
+    position: absolute;
+    bottom: -16px;
+    left: 50%;
+    font-size: 25px;
+    background: #111;
+    color: rgba(245, 168, 210, 0.897);
+    padding: 5px;
+    transform: translateX(-50%);
+}
+.hobbies .title::before,.projetos .title::before{
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    background: #fff;
+    width: 240px;
+    height: 3px;
+    transform: translateX(-50%);
+}
+.hobbies .hobbies-content .card{
+    width: calc(50% - 25px);
+    background-color: #222;
+    text-align: center;
+    border-radius: 6px;
+    padding: 15px 25px;
+    cursor: pointer;
+    margin-bottom: 20px;
+    transition: all 0.3s ease;
+}
+.hobbies .hobbies-content .card:hover{
+    background: rgba(245, 168, 210, 0.897);
+}
+.hobbies .hobbies-content .card .box{
+    transition: all 0.3s ease;
+}
+.hobbies .hobbies-content .card .box p{
+    transition: all 0.3s ease;
+    color: #fff;
+}
+.hobbies .hobbies-content .card:hover .box{
+    transform: scale(1.05);
+}
+.hobbies .hobbies-content .card ion-icon{
+    font-size: 45px;
+    color: rgba(245, 168, 210, 0.897);
+}
+.hobbies .hobbies-content .card:hover ion-icon{
+    color: #fff;
+}
+.hobbies .hobbies-content .card .text{
+    font-size: 25px;
+    font-weight: 500;
+    font-family: 'Fira Sans', sans-serif;
+    margin: 10px 0 8px 0;
+}
+/* inicio habilidades */
+.habilidades .title{
+    font-family: 'Fira Sans', sans-serif;
+    text-align: center;
+    font-size: 50px;
+    font-weight: 500;
+    margin-bottom: 60px;
+    padding-bottom: 20px;
+    position: relative;
+}
+.habilidades .title::before{
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    background: #111;
+    width: 280px;
+    height: 3px;
+    transform: translateX(-50%);
+}
+.habilidades .title::after{
+    content: "Meus aprendizados";
+    position: absolute;
+    bottom: -16px;
+    left: 50%;
+    font-size: 25px;
+    background: #fff;
+    color: rgba(245, 168, 210, 0.897);
+    padding: 5px;
+    transform: translateX(-50%);
+}
+.habilidades .habilidades-content .left .text{
+    font-size: 28px;
+    font-weight: 500;
+    margin-bottom: 10px;
+    font-family: 'Fira Sans', sans-serif;
+}
+.habilidades .habilidades-content .left p{
+    font-size: 16px;
+    font-weight: 300;
+    margin-bottom: 10px;
+    font-family: 'Fira Sans', sans-serif;
+    text-align: justify;
+}
+.habilidades .habilidades-content .left a{
+    display: inline-block;
+    background: rgba(245, 168, 210, 0.897);
+    color: #fff;
+    font-family: 'Fira Sans', sans-serif;
+    font-size: 25px;
+    padding: 10px 30px;
+    margin-top: 10px;
+    border-radius: 8px;
+    border: 2px solid rgba(245, 168, 210, 0.897);
+}
+.habilidades .habilidades-content .left a:hover{
+    color: rgba(245, 168, 210, 0.897);
+    background: none;
+    transition: all 0.3s ease;
+}
+.habilidades .habilidades-content .column{
+    width: calc(50% - 30px);
+}
+.habilidades .habilidades-content .right .bars{
+    margin-bottom: 15px;
+}
+.habilidades .habilidades-content .right .info{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.habilidades .habilidades-content .right span{
+    font-weight: 500;
+    font-size: 18px;
+    font-family: 'Fira sans', sans-serif;    
+}
+.habilidades .habilidades-content .right .line{
+    width: 100%;
+    height: 5px;
+    background: #ccc;
+    position: relative;
+    border-radius: 2px;
+}
+.habilidades .habilidades-content .right .line::before{
+    content: "";
+    position: absolute;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background-color: rgba(245, 168, 210, 0.897);
+}
+.habilidades .habilidades-content .right .html::before{
+    width: 90%;
+}
+.habilidades .habilidades-content .right .css::before{
+    width: 75%;
+}
+.habilidades .habilidades-content .right .javascript::before{
+    width: 50%;
+}
+.habilidades .habilidades-content .right .python::before{
+    width: 42%;
+}
+.habilidades .habilidades-content .right .mysql::before{
+    width: 25%;
+}
+/* inicio projetos */
+.projetos .title::after{
+    content: "Meus projetos";
+}
+.projetos .carousel .card{
+    width: calc(100%);
+    background-color: #222;
+    text-align: center;
+    border-radius: 6px;
+    padding: 15px 25px;
+    cursor: pointer;
+    margin-bottom: 20px;
+    transition: all 0.3s ease;
+}
+.projetos .carousel .card:hover{
+    background: rgba(245, 168, 210, 0.897);
+}
+.projetos .carousel .card .box{
+    transition: all 0.3s ease;
+}
+.projetos .carousel .card:hover .box{
+    transform: scale(1.05);
+}
+.projetos .carousel .card .box a{
+    color: white;
+}
+.projetos .carousel .box p{
+    font-size: 15px;
+    font-weight: 500;
+    font-family: 'Fira sans', sans-serif;
+    text-align: center;
+    padding-top: 5px;
+}
+.projetos .carousel .card img{
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 50%;
+    border: 5px solid rgba(245, 168, 210, 0.897);
+}
+.projetos .carousel .card img:hover{
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 50%;
+    border: 5px solid #fff;
+}
+.projetos .carousel .card .box .text{
+    font-size: 28px;
+    font-family: 'Fira Sans', sans-serif;
+    margin-bottom: 5px;
+    padding: 10px 0;
+}
+.projetos .carousel .card .box{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+/* contato inicio */
+.contato .title{
+    font-family: 'Fira Sans', sans-serif;
+    text-align: center;
+    font-size: 50px;
+    font-weight: 500;
+    margin-bottom: 60px;
+    padding-bottom: 20px;
+    position: relative;
+}
+.contato .title::before{
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    background: #111;
+    width: 280px;
+    height: 3px;
+    transform: translateX(-50%);
+}
+.contato .title::after{
+    content: "Meus contatos";
+    position: absolute;
+    bottom: -16px;
+    left: 50%;
+    font-size: 25px;
+    background: #fff;
+    color: rgba(245, 168, 210, 0.897);
+    padding: 5px;
+    transform: translateX(-50%);
+}
+.contato .contato-content .text{
+    font-size: 25px;
+    font-weight: 500;
+    font-family: 'Fira Sans', sans-serif;
+    margin-bottom: 5px;
+}
+.contato .contato-content p{
+    font-size: 15px;
+    font-family: 'Fira Sans', sans-serif;
+    margin-bottom: 10px;
+}
+.contato .contato-content .left p{
+    text-align: justify;
+}
+.contato .contato-content .left .icons{
+    margin: 10px 0;
+}
+.contato .contato-content .row{
+    display: flex;
+    height: 65px;
+    align-items: center;     
+}
+.contato .contato-content .row .info{
+    margin-left: 30px;
+}
+.contato .contato-content .row .info .head{
+    font-family: 'Fira Sans', sans-serif;
+    font-weight: 1000;
+    font-size: 20px;
+}
+.contato .contato-content .row .info .resposta{
+    font-weight: 500;
+    font-family: 'Fira Sans', sans-serif;
+    color: #222;
+}
+.contato .contato-content .row ion-icon{
+     font-size: 32px;
+     color: rgba(245, 168, 210, 0.897);
+}
+.contato .contato-content .right img{
+    position: absolute;
+    display: flex;
+    flex-direction: column;      
+    left: 1200px;
+    top: 4930px;
+}
+/* footer */
+footer{
+    font-family: 'Fira sans', sans-serif;
+    font-weight: 500;
+    font-size: 14px;
+    background: #111;
+    padding: 20px 25px;
+    color: #fff;
+    text-align: center;
+}
+footer span a{
+    color: rgba(245, 168, 210, 0.897);
+    text-decoration: none;
+    text-align: center;
+}
+/* responsividade */
+@media (max-width: 1300px){
+    .navbar .max-width{
+        margin-left: 0;
+    }
+}
+@media (max-width: 1104px){
+    .sobre .sobre-content .left img{
+        width: 350px;
+        height: 350px;
+    }
+}
+@media (max-width: 991px){
+    .navbar .max-width{
+        padding: 0 50px;
+    }
+}
+@media (max-width: 947px){
+    .max-width{
+        max-width: 800px;
+        padding: 0 50px;
+    }
+    .botao-menu{
+        display: block;
+        z-index: 999;
+    }
+    .navbar .menu{
+        position: fixed;
+        width: 100%;
+        height: 100vh;
+        left: -100%;
+        top: 0;
+        background: #111;
+        padding-top: 80px;
+        text-align: center;
+        transition: all 0.3s ease;
+    }
+    .navbar .menu.active{
+        left: 0;
+    }
+    .navbar .menu li{
+        display: block;
+    }
+    .navbar .menu li a{
+        display: inline-block;
+        margin: 20px 0;
+        font-size: 25px;
+    }
+    .home .home-content .text-2{
+        font-size: 70px;
+    }
+    .home .home-content .text-3{
+        font-size: 35px;
+    }
+    .home .home-content a{
+        font-size: 23px;
+        padding: 9px 28px;
+    }
+    .sobre .sobre-content .column{
+        width: 50%;
+    }
+    .habilidades .habilidades-content .column{
+        width: 100%;
+        margin-bottom: 35px;
+    }
+    .sobre .sobre-content .left{
+        display: flex;
+        justify-content: center;
+        margin: 0 auto 60px;
+    }
+    .sobre .sobre-content .right{
+        flex: 100%;
+    }
+    .hobbies .hobbies-content .card {
+        width: calc(50% - 10px);
+        margin-bottom: 20px;
+    }
+}
+@media (max-width: 690px){
+    .home .home-content .text-2{
+        font-size: 60px;
+    }
+    .home .home-content .text-3{
+        font-size: 32px;
+    }
+    .home .home-content a{
+        font-size: 18px;
+    }
+    .hobbies .hobbies-content .card {
+        width:100%;
+    }
+}
+@media (max-width: 500px){
+    .home .home-content .text-2{
+        font-size: 50px;
+    }
+    .home .home-content .text-3{
+        font-size: 27px;
+    }
+}
