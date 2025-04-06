@@ -6,10 +6,681 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Portfólio // Front</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css"/>
-    <link rel="stylesheet" href="style.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Fira+Sans:ital,wght@0,400;1,300&display=swap');
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            text-decoration: none;    
+        }
+        html{
+            scroll-behavior: smooth;
+        }
+        .max-width{
+            max-width: 1300px;
+            padding: 0 80px;
+            margin: auto;
+        }
+        /* navbar inicio */
+        .navbar{
+            position: fixed;
+            width: 100%;
+            padding: 15px 0;
+            font-family: 'Fira Sans', sans-serif;
+            transition: all 0.3s ease;  
+            z-index: 999;    
+        }
+        .navbar.sticky{
+            background: rgba(76, 175, 80, 0.897); /* Verde suave */
+            padding: 15px 0;
+        }
+        .navbar .max-width{
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        .navbar .logo a{
+            color: #fff;
+            font-size: 35px;
+            font-weight: 500;
+        }
+        .navbar .logo a span{
+            color: rgba(76, 175, 80, 0.897); /* Verde suave */
+            font-size: 35px;
+            font-weight: 500;
+        }
+        .navbar.sticky .logo a span{
+            color: #fff;
+            transition: all 0.3s ease;
+        }
+        .navbar .menu li{
+            list-style: none;
+            display: inline-block;
+        }
+        .navbar .menu li a{
+            color: #fff;
+            font-size: 18px;
+            font-weight: 500px;
+            margin-left: 25px;
+            transition: color 0.3s ease;
+        }
+        .navbar .menu li a:hover{
+            color: rgba(76, 175, 80, 0.897); /* Verde suave */
+        }
+        .navbar.sticky .menu li a:hover{
+            color: #fff;
+        }
+        /* home inicio */
+        .home{
+            display: flex;
+            background: url(images/background.jpg);
+            height: 100vh;
+            color: #fff;
+            min-height: 500px;
+            font-family: 'Fira Sans', sans-serif;
+        }
+        .home .max-width{
+            margin: auto 0 auto 40px;    
+        }
+        .home .home-content .text-1{
+            font-size: 30px;
+        }
+        .home .home-content .text-2{
+            font-size: 75px;
+            font-weight: 500;
+            margin-left: -3px;
+        }
+        .home .home-content .text-3{
+            font-size: 45px;
+            font-weight: 1000;
+            margin: 5px 0;    
+        }
+        .home .home-content a{
+            display: inline-block;
+            background: rgba(76, 175, 80, 0.897); /* Verde suave */
+            color: #fff;
+            font-size: 25px;
+            padding: 10px 30px;
+            margin-top: 10px;
+            border-radius: 8px;
+            border: 2px solid rgba(76, 175, 80, 0.897); /* Verde suave */
+        }
+        .home .home-content a:hover{
+            color: rgba(76, 175, 80, 0.897); /* Verde suave */
+            background: none;
+            transition: all 0.3s ease;
+        }
+        .home .home-content .text-3 span{
+            color: rgba(76, 175, 80, 0.897); /* Verde suave */
+        }
+        /*inicio menu botao*/
+        .botao-menu{
+            color: #fff;
+            font-size: 25px;
+            cursor: pointer;
+            display: none;
+        }
+        .botao-scroll-up{
+            font-size: 70px;
+            position: fixed;
+            width: 45px;
+            height: 50px;
+            right: 30px;
+            bottom: 30px;
+            text-align: center;
+            line-height: 45px;
+            color: rgba(76, 175, 80, 0.897); /* Verde suave */
+            background: none;
+            z-index: 999;
+            cursor: pointer;
+            opacity: 0;
+            pointer-events: none;
+            transition: all 0.3s ease;
+        }
+        .botao-scroll-up.show{
+            opacity: 1;
+            pointer-events: auto;
+            bottom: 30px;
+        }
+        /*inicio sessão sobre*/
+        section{
+            padding: 100px 0;
+        }
+        .sobre{
+            font-family: 'Times New Roman', Times, sans-serif;
+        }
+        .sobre .sobre-content, .hobbies .hobbies-content, .habilidades .habilidades-content, .projetos{
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: space-between;
+        }
+        .sobre .title{
+            font-family: 'Fira Sans', sans-serif;
+            text-align: center;
+            font-size: 50px;
+            font-weight: 500;
+            margin-bottom: 60px;
+            padding-bottom: 20px;
+            position: relative;
+        }
+        .sobre .title::before{
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            background: #111;
+            width: 240px;
+            height: 3px;
+            transform: translateX(-50%);
+        }
+        .sobre .title::after{
+            content: "Quem sou eu";
+            position: absolute;
+            bottom: -16px;
+            left: 50%;
+            font-size: 25px;
+            background: #fff;
+            color: rgba(76, 175, 80, 0.897); /* Verde suave */
+            padding: 5px;
+            transform: translateX(-50%);
+        }
+        .sobre .sobre-content .left{
+            width: 45%;
+        }
+        .sobre .sobre-content .right{
+            width: 55%;
+        }
+        .sobre .sobre-content .right .text{
+            font-size: 35px;
+            font-weight: 500;
+            margin-bottom: 10px;
+            font-family: 'Fira Sans', sans-serif;
+        }
+        .sobre .sobre-content .right .text span{
+            color: rgba(76, 175, 80, 0.897); /* Verde suave */
+            font-family: 'Fira Sans', sans-serif;
+        }
+        .sobre .sobre-content .right p{
+            text-align: justify;
+            font-size: 17px;
+            font-family: 'Fira Sans', sans-serif;
+        }
+        .sobre .sobre-content .right a{
+            display: inline-block;
+            background: rgba(76, 175, 80, 0.897); /* Verde suave */
+            color: #fff;
+            font-family: 'Fira Sans', sans-serif;
+            font-size: 25px;
+            padding: 10px 30px;
+            margin-top: 10px;
+            border-radius: 8px;
+            border: 2px solid rgba(76, 175, 80, 0.897); /* Verde suave */
+        }
+        .sobre .sobre-content .right a:hover{
+            color: rgba(76, 175, 80, 0.897); /* Verde suave */
+            background: none;
+            transition: all 0.3s ease;
+        }
+        .sobre .sobre-content .left img{
+            width: 400px;
+            height: 500px;
+            object-fit: cover;
+            border-radius: 10px;
+        }
+        /* inicio hobbies */
+        .hobbies, .projetos{
+            background: #111;
+        }
+        .hobbies .hobbies-content, .projetos{
+            color: #fff;
+        }
+        .hobbies .title, .projetos .title{
+            font-family: 'Fira Sans', sans-serif;
+            text-align: center;
+            font-size: 50px;
+            font-weight: 500;
+            margin-bottom: 60px;
+            padding-bottom: 20px;
+            position: relative;
+            color: #fff;
+        }
+        .hobbies .hobbies-content .card .box p{
+            font-size: 15px;
+            font-family: 'Fira Sans', sans-serif;
+        }
+        .hobbies .title::after, .projetos .title::after{
+            content: "Meus Hobbies";
+            position: absolute;
+            bottom: -16px;
+            left: 50%;
+            font-size: 25px;
+            background: #111;
+            color: rgba(76, 175, 80, 0.897); /* Verde suave */
+            padding: 5px;
+            transform: translateX(-50%);
+        }
+        .hobbies .title::before, .projetos .title::before{
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            background: #fff;
+            width: 240px;
+            height: 3px;
+            transform: translateX(-50%);
+        }
+        .hobbies .hobbies-content .card{
+            width: calc(50% - 25px);
+            background-color: #222;
+            text-align: center;
+            border-radius: 6px;
+            padding: 15px 25px;
+            cursor: pointer;
+            margin-bottom: 20px;
+            transition: all 0.3s ease;
+        }
+        .hobbies .hobbies-content .card:hover{
+            background: rgba(76, 175, 80, 0.897); /* Verde suave */
+        }
+        .hobbies .hobbies-content .card .box{
+            transition: all 0.3s ease;
+        }
+        .hobbies .hobbies-content .card .box p{
+            transition: all 0.3s ease;
+            color: #fff;
+        }
+        .hobbies .hobbies-content .card:hover .box{
+            transform: scale(1.05);
+        }
+        .hobbies .hobbies-content .card ion-icon{
+            font-size: 45px;
+            color: rgba(76, 175, 80, 0.897); /* Verde suave */
+        }
+        .hobbies .hobbies-content .card:hover ion-icon{
+            color: #fff;
+        }
+        .hobbies .hobbies-content .card .text{
+            font-size: 25px;
+            font-weight: 500;
+            font-family: 'Fira Sans', sans-serif;
+            margin: 10px 0 8px 0;
+        }
+        /* inicio habilidades */
+        .habilidades .title{
+            font-family: 'Fira Sans', sans-serif;
+            text-align: center;
+            font-size: 50px;
+            font-weight: 500;
+            margin-bottom: 60px;
+            padding-bottom: 20px;
+            position: relative;
+        }
+        .habilidades .title::before{
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            background: #111;
+            width: 280px;
+            height: 3px;
+            transform: translateX(-50%);
+        }
+        .habilidades .title::after{
+            content: "Minhas habilidades";
+            position: absolute;
+            bottom: -16px;
+            left: 50%;
+            font-size: 25px;
+            background: #fff;
+            color: rgba(76, 175, 80, 0.897); /* Verde suave */
+            padding: 5px;
+            transform: translateX(-50%);
+        }
+        .habilidades .habilidades-content .left .text{
+            font-size: 28px;
+            font-weight: 500;
+            margin-bottom: 10px;
+            font-family: 'Fira Sans', sans-serif;
+        }
+        .habilidades .habilidades-content .left p{
+            font-size: 16px;
+            font-weight: 300;
+            margin-bottom: 10px;
+            font-family: 'Fira Sans', sans-serif;
+            text-align: justify;
+        }
+        .habilidades .habilidades-content .left a{
+            display: inline-block;
+            background: rgba(76, 175, 80, 0.897); /* Verde suave */
+            color: #fff;
+            font-family: 'Fira Sans', sans-serif;
+            font-size: 25px;
+            padding: 10px 30px;
+            margin-top: 10px;
+            border-radius: 8px;
+            border: 2px solid rgba(76, 175, 80, 0.897); /* Verde suave */
+        }
+        .habilidades .habilidades-content .left a:hover{
+            color: rgba(76, 175, 80, 0.897); /* Verde suave */
+            background: none;
+            transition: all 0.3s ease;
+        }
+        .habilidades .habilidades-content .column{
+            width: calc(50% - 30px);
+        }
+        .habilidades .habilidades-content .right .bars{
+            margin-bottom: 15px;
+        }
+        .habilidades .habilidades-content .right .info{
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        .habilidades .habilidades-content .right span{
+            font-weight: 500;
+            font-size: 18px;
+            font-family: 'Fira sans', sans-serif;    
+        }
+        .habilidades .habilidades-content .right .line{
+            width: 100%;
+            height: 5px;
+            background: #ccc;
+            position: relative;
+            border-radius: 2px;
+        }
+        .habilidades .habilidades-content .right .line::before{
+            content: "";
+            position: absolute;
+            height: 100%;
+            top: 0;
+            left: 0;
+            background-color: rgba(76, 175, 80, 0.897); /* Verde suave */
+        }
+        .habilidades .habilidades-content .right .premier::before{
+            width: 100%;
+        }
+        .habilidades .habilidades-content .right .aftereffects::before{
+            width: 75%;
+        }
+        .habilidades .habilidades-content .right .photoshop::before{
+            width: 60%;
+        }
+        .habilidades .habilidades-content .right .traducao::before{
+            width: 100%;
+        }
+        /* inicio projetos */
+        .projetos .title::after{
+            content: "Meus projetos";
+        }
+        .projetos .project-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+        .projetos .project-buttons button {
+            background: rgba(76, 175, 80, 0.897); /* Verde suave */
+            color: #fff;
+            font-family: 'Fira Sans', sans-serif;
+            font-size: 18px;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        .projetos .project-buttons button:hover {
+            background: none;
+            color: rgba(76, 175, 80, 0.897); /* Verde suave */
+            border: 2px solid rgba(76, 175, 80, 0.897);
+        }
+        .projetos .project-video {
+            display: none;
+            justify-content: center;
+            margin-bottom: 30px;
+        }
+        .projetos .project-video.active {
+            display: flex;
+        }
+        .projetos .project-video iframe {
+            width: 100%;
+            max-width: 800px; /* Restaurado para o tamanho original */
+            height: 450px; /* Restaurado para o tamanho original (proporção 16:9) */
+            border-radius: 8px;
+        }
+        .projetos .clients {
+            text-align: center;
+        }
+        .projetos .clients h3 {
+            font-family: 'Fira Sans', sans-serif;
+            font-size: 30px;
+            color: #fff;
+            margin-bottom: 20px;
+        }
+        .projetos .clients .client-logos {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+        }
+        .projetos .clients .client-logos img {
+            width: 150px;
+            height: auto;
+        }
+        /* contato inicio */
+        .contato .title{
+            font-family: 'Fira Sans', sans-serif;
+            text-align: center;
+            font-size: 50px;
+            font-weight: 500;
+            margin-bottom: 60px;
+            padding-bottom: 20px;
+            position: relative;
+        }
+        .contato .title::before{
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            background: #111;
+            width: 280px;
+            height: 3px;
+            transform: translateX(-50%);
+        }
+        .contato .title::after{
+            content: "Meus contatos";
+            position: absolute;
+            bottom: -16px;
+            left: 50%;
+            font-size: 25px;
+            background: #fff;
+            color: rgba(76, 175, 80, 0.897); /* Verde suave */
+            padding: 5px;
+            transform: translateX(-50%);
+        }
+        .contato .contato-content .text{
+            font-size: 25px;
+            font-weight: 500;
+            font-family: 'Fira Sans', sans-serif;
+            margin-bottom: 5px;
+        }
+        .contato .contato-content p{
+            font-size: 15px;
+            font-family: 'Fira Sans', sans-serif;
+            margin-bottom: 10px;
+        }
+        .contato .contato-content .left p{
+            text-align: justify;
+        }
+        .contato .contato-content .left .icons{
+            margin: 10px 0;
+        }
+        .contato .contato-content .row{
+            display: flex;
+            height: 65px;
+            align-items: center;     
+        }
+        .contato .contato-content .row .info{
+            margin-left: 30px;
+        }
+        .contato .contato-content .row .info .head{
+            font-family: 'Fira Sans', sans-serif;
+            font-weight: 1000;
+            font-size: 20px;
+        }
+        .contato .contato-content .row .info .resposta{
+            font-weight: 500;
+            font-family: 'Fira Sans', sans-serif;
+            color: #222;
+        }
+        .contato .contato-content .row ion-icon{
+            font-size: 32px;
+            color: rgba(76, 175, 80, 0.897); /* Verde suave */
+        }
+        .contato .contato-content .right img{
+            position: absolute;
+            display: flex;
+            flex-direction: column;      
+            left: 1200px;
+            top: 4930px;
+        }
+        /* footer */
+        footer{
+            font-family: 'Fira sans', sans-serif;
+            font-weight: 500;
+            font-size: 14px;
+            background: #111;
+            padding: 20px 25px;
+            color: #fff;
+            text-align: center;
+        }
+        footer span a{
+            color: rgba(76, 175, 80, 0.897); /* Verde suave */
+            text-decoration: none;
+            text-align: center;
+        }
+        /* responsividade */
+        @media (max-width: 1300px){
+            .navbar .max-width{
+                margin-left: 0;
+            }
+        }
+        @media (max-width: 1104px){
+            .sobre .sobre-content .left img{
+                width: 350px;
+                height: 350px;
+            }
+        }
+        @media (max-width: 991px){
+            .navbar .max-width{
+                padding: 0 50px;
+            }
+        }
+        @media (max-width: 947px){
+            .max-width{
+                max-width: 800px;
+                padding: 0 50px;
+            }
+            .botao-menu{
+                display: block;
+                z-index: 999;
+            }
+            .navbar .menu{
+                position: fixed;
+                width: 100%;
+                height: 100vh;
+                left: -100%;
+                top: 0;
+                background: #111;
+                padding-top: 80px;
+                text-align: center;
+                transition: all 0.3s ease;
+            }
+            .navbar .menu.active{
+                left: 0;
+            }
+            .navbar .menu li{
+                display: block;
+            }
+            .navbar .menu li a{
+                display: inline-block;
+                margin: 20px 0;
+                font-size: 25px;
+            }
+            .home .home-content .text-2{
+                font-size: 70px;
+            }
+            .home .home-content .text-3{
+                font-size: 35px;
+            }
+            .home .home-content a{
+                font-size: 23px;
+                padding: 9px 28px;
+            }
+            .sobre .sobre-content .column{
+                width: 50%;
+            }
+            .habilidades .habilidades-content .column{
+                width: 100%;
+                margin-bottom: 35px;
+            }
+            .sobre .sobre-content .left{
+                display: flex;
+                justify-content: center;
+                margin: 0 auto 60px;
+            }
+            .sobre .sobre-content .right{
+                flex: 100%;
+            }
+            .hobbies .hobbies-content .card {
+                width: calc(50% - 10px);
+                margin-bottom: 20px;
+            }
+            .projetos .project-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+            .projetos .project-buttons button {
+                width: 100%;
+                max-width: 300px;
+            }
+            .projetos .project-video iframe {
+                height: 300px; /* Restaurado para o valor original */
+            }
+            .projetos .clients .client-logos {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+        @media (max-width: 690px){
+            .home .home-content .text-2{
+                font-size: 60px;
+            }
+            .home .home-content .text-3{
+                font-size: 32px;
+            }
+            .home .home-content a{
+                font-size: 18px;
+            }
+            .hobbies .hobbies-content .card {
+                width: 100%;
+            }
+            .projetos .project-video iframe {
+                height: 200px; /* Restaurado para o valor original */
+            }
+        }
+        @media (max-width: 500px){
+            .home .home-content .text-2{
+                font-size: 50px;
+            }
+            .home .home-content .text-3{
+                font-size: 27px;
+            }
+        }
+    </style>
 </head>
 <body>
-       
     <div class="botao-scroll-up">
         <ion-icon name="caret-up-circle-outline"></ion-icon>
     </div>
@@ -34,7 +705,7 @@
         <div class="max-width">
             <div class="home-content">
                 <div class="text-1">Oi, meu nome é</div>
-                <div class="text-2">Caio Castello</div>
+                <div class="text-2">Barbara Faria</div>
                 <div class="text-3">e eu sou <span class="typeloop"></span></div>
                 <a href="#contato">Contrate-me!</a>
             </div>
@@ -46,11 +717,11 @@
             <h2 class="title">Sobre</h2>
             <div class="sobre-content">                
                 <div class="column left">
-                    <img src="image/caio.jpeg" alt="">                    
-                    </div>
+                    <img src="images/babifoto.jpg" alt="">                    
+                </div>
                 <div class="column right">
-                    <div class="text">Sou Caio e sou <span class="typeloop2"></span></div>
-                    <p>Estou em busca de uma oportunidade de Estágio na área de T.I há algum tempo. Fiz este pequeno portfólio utilizando HTML, CSS e JavaScript para mostrar um pouco do que venho aprendendo, pensei também em trazer uma pegada um pouco mais descontraída, com uma temática mais jovem/anime. Já atuei como profissional de T.I na área de Planejamento & desenvolvimento. Atualmente estou sonhando com uma oportunidade para aprender muito e crescer na área Dev. Acredito que tenho muito a somar em qualquer time que eu venha participar, extremamente comunicativo e amistoso com muita vontade de aprender.</p>
+                    <div class="text">Sou Barbara e sou <span class="typeloop2"></span></div>
+                    <p>Estou em busca de uma oportunidade de Estágio na área de edição de vídeos há algum tempo. Fiz este pequeno portfólio utilizando HTML, CSS e JavaScript para mostrar um pouco do que venho aprendendo, pensei também em trazer uma pegada um pouco mais descontraída, com uma temática mais jovem/anime. Já atuei como profissional na área de produção de conteúdo audiovisual. Atualmente estou sonhando com uma oportunidade para aprender muito e crescer na área de edição e produção de vídeos. Acredito que tenho muito a somar em qualquer time que eu venha participar, extremamente comunicativa e amistosa com muita vontade de aprender.</p>
                     <a href="https://drive.google.com/file/d/1zktgyo-AhxFuCuWFsqG-vyrhAbCnwY1A/view?usp=sharing">Download CV</a> 
                 </div>
             </div>
@@ -64,29 +735,29 @@
                 <div class="card">
                     <div class="box">
                         <ion-icon name="build-outline"></ion-icon>
-                        <div class="text">Customização de periféricos</div>
-                        <p>Tenho passado um bom tempo assistindo canais que customizam periféricos, como teclados e mouses. Pretendo customizar um teclado em breve!</p>
+                        <div class="text">Assistir séries</div>
+                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quam repellat excepturi quibusdam fugit aliquid voluptatem.</p>
                     </div>
                 </div>
                 <div class="card">
                     <div class="box">
                         <a href="https://myanimelist.net/animelist/Castellocaio"><ion-icon name="tv-outline"></ion-icon></a>
-                        <div class="text">Animes</div>
-                        <a href="https://myanimelist.net/animelist/Castellocaio"><p>Tem coisa melhor que um animezinho bom? Não tenho um genêro favorito, mas meu anime favorito é Hunter x Hunter. Clica aqui e veja minha lista!</p></a>                        
+                        <div class="text">Estudo</div>
+                        <a href="https://myanimelist.net/animelist/Castellocaio"><p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Velit tenetur dolores officia quo ipsa accusantium?</p></a>                        
                     </div>
                 </div>
                 <div class="card">
                     <div class="box">
                         <ion-icon name="code-outline"></ion-icon>
-                        <div class="text">Conteúdos Dev.</div>
-                        <p>Tenho buscado bastante conteúdo em relação a HTML, CSS, JavaScript e Python. Com o objetivo de me desenvolver como profissional.</p>
+                        <div class="text">Acompanhar redes</div>
+                        <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Alias nemo eaque pariatur, reiciendis obcaecati modi?.</p>
                     </div>
                 </div>                
                 <div class="card">
                     <div class="box">
                         <ion-icon name="game-controller-outline"></ion-icon>
                         <div class="text">Games</div>
-                        <p>Sou extremamente competitivo, uma das coisas que mais curto são jogos no qual tenho a possibilidade de me destacar em rankings.</p>
+                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatum magnam reiciendis adipisci, sunt eveniet nostrum?.</p>
                     </div>
                 </div>
             </div>
@@ -99,44 +770,37 @@
             <div class="habilidades-content">                
                 <div class="column left">
                     <div class="text">Minhas habilidades criativas e experiências</div>
-                    <p>Meu primeiro contato com a programação foi através da linguagem C++, na faculdade. Confesso ter ficado um pouco perdido e não gostado tanto. Felizmente quando chegou na parte de HTML/CSS, minha mente começou a clarear um pouco mais sobre esse mundo do desenvolvimento. Atualmente venho estudando através da internet JavaScript e Python. Ainda não possuo muita prática sobre as duas linguagens, mas tenho ao menos o dominio da síntaxe básica.</p>                 
+                    <p>Minha jornada na edição de vídeos começou há alguns anos, quando descobri minha paixão por transformar ideias em narrativas visuais. Domino ferramentas como Adobe Premiere e After Effects, criando edições dinâmicas e efeitos visuais que capturam a atenção. Também tenho experiência com Photoshop para tratamento de imagens e criação de thumbnails. Além disso, sou especializada em tradução e legendagem de vídeos, garantindo que o conteúdo seja acessível para diferentes públicos. Estou sempre buscando aprender mais e aprimorar minhas técnicas para entregar projetos de alta qualidade.</p>                 
                     <a href="https://drive.google.com/file/d/1zktgyo-AhxFuCuWFsqG-vyrhAbCnwY1A/view?usp=sharing">Mais informações</a>
                 </div>
                 <div class="column right">
                     <div class="bars">
                         <div class="info">
-                            <span>HTML</span>
-                            <span>90%</span>
+                            <span>Premiere</span>
+                            <span>100%</span>
                         </div>
-                        <div class="line html"></div>                       
+                        <div class="line premier"></div>                       
                     </div>
                     <div class="bars">
                         <div class="info">
-                            <span>CSS</span>
-                            <span>75%</span>
+                            <span>After Effects</span>
+                            <span>70%</span>
                         </div>
-                        <div class="line css"></div>                      
+                        <div class="line aftereffects"></div>                      
                     </div>         
                     <div class="bars">
                         <div class="info">
-                            <span>JavaScript</span>
-                            <span>50%</span>
+                            <span>Photoshop</span>
+                            <span>60%</span>
                         </div>
-                        <div class="line javascript"></div>                         
+                        <div class="line photoshop"></div>                         
                     </div>         
                     <div class="bars">
                         <div class="info">
-                            <span>Python</span>
-                            <span>42%</span>
+                            <span>Tradução</span>
+                            <span>100%</span>
                         </div>
-                        <div class="line python"></div>                         
-                    </div>         
-                    <div class="bars">
-                        <div class="info">
-                            <span>MySQL</span>
-                            <span>25%</span>
-                        </div>
-                        <div class="line mysql"></div>                         
+                        <div class="line traducao"></div>                         
                     </div>                             
                 </div>
             </div>
@@ -146,39 +810,34 @@
     <section class="projetos" id="projetos">
         <div class="max-width">
             <h2 class="title">Projetos</h2>
-            <div class="carousel">
-                <div class="card">
-                    <div class="box">
-                        <a href="https://effervescent-malabi-554d93.netlify.app"><img src="image/LOGIN SCREEN.png" alt="">
-                        <div class="text">Tela de login</div>
-                        <p>Tela de login feita apenas com HTML e CSS.</p></a>
-                    </div>
+            <div class="project-buttons">
+                <button onclick="showVideo('video1')">Projeto 1</button>
+                <button onclick="showVideo('video2')">Projeto 2</button>
+                <button onclick="showVideo('video3')">Projeto 3</button>
+                <button onclick="showVideo('video4')">Projeto 4</button>
+                <button onclick="showVideo('video5')">Projeto 5</button>
+            </div>
+            <div class="project-video" id="video1">
+                <iframe src="https://drive.google.com/file/d/16PJYVtXGzdSTayBjxE3f8OTWzlC27ZFb/preview" allow="autoplay" allowfullscreen></iframe>
+            </div>
+            <div class="project-video" id="video2">
+                <iframe src="https://drive.google.com/file/d/16PJYVtXGzdSTayBjxE3f8OTWzlC27ZFb/preview" allow="autoplay" allowfullscreen></iframe>
+            </div>
+            <div class="project-video" id="video3">
+                <iframe src="https://drive.google.com/file/d/16PJYVtXGzdSTayBjxE3f8OTWzlC27ZFb/preview" allow="autoplay" allowfullscreen></iframe>
+            </div>
+            <div class="project-video" id="video4">
+                <iframe src="https://drive.google.com/file/d/16PJYVtXGzdSTayBjxE3f8OTWzlC27ZFb/preview" allow="autoplay" allowfullscreen></iframe>
+            </div>
+            <div class="project-video" id="video5">
+                <iframe src="https://drive.google.com/file/d/16PJYVtXGzdSTayBjxE3f8OTWzlC27ZFb/preview" allow="autoplay" allowfullscreen></iframe>
+            </div>
+            <div class="clients">
+                <h3>Clientes que já trabalhei</h3>
+                <div class="client-logos">
+                    <img src="images/soma.png" alt="Grupo SOMA">
+                    <img src="images/globo.png" alt="O Globo">
                 </div>
-                <div class="card">
-                    <div class="box">
-                        <a href="https://zesty-dusk-bf9de0.netlify.app">
-                        <img src="image/CALCULADORA.png" alt="">
-                        <div class="text">Calculadora</div>
-                        <p>Calculadora feita com as tecnologias HTML, CSS e JavaScript</p></a>
-                    </div>
-                </div>
-                <div class="card">
-                    <div class="box">
-                        <a href="#">
-                        <img src="image/SOON.png" alt="">
-                        <div class="text">Soon</div>
-                        <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Optio sed, sit repudiandae soluta explicabo error.</p></a>
-                    </div>
-                </div>
-                <div class="card">
-                    <div class="box">
-                        <a href="#">
-                        <img src="image/SOON.png" alt="">
-                        <div class="text">Soon</div>
-                        <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Optio sed, sit repudiandae soluta explicabo error.</p></a>
-                    </div>
-                </div>
-            </div>                                      
             </div>
         </div>
     </section>
@@ -189,14 +848,14 @@
             <div class="contato-content">                
                 <div class="column left">
                     <div class="text">Caso tenha curtido, entre em contato!</div>
-                    <p>Estou buscando uma oportunidade de Estágio na área de desenvolvimento, de preferência em linguagens que eu tenho pelo menos um pouco de conhecimento!</p>
+                    <p>Estou buscando uma oportunidade de Estágio na área de edição e produção de vídeos, de preferência em projetos que me permitam usar minhas habilidades em Premiere, After Effects e tradução de legendas!</p>
                 </div>
                 <div class="icons">
                     <div class="row">
                         <ion-icon name="person-circle-outline"></ion-icon>
                         <div class="info">
                             <div class="head">Nome</div>
-                            <div class="resposta">Caio Castello Branco de Oliveira Ferreira</div>
+                            <div class="resposta">Barbara Faria</div>
                         </div>
                     </div>
                     <div class="row">
@@ -210,39 +869,77 @@
                         <ion-icon name="mail-outline"></ion-icon>
                         <div class="info">
                             <div class="head">E-mail</div>
-                            <div class="resposta">castellocaiio13@gmail.com</div>
+                            <div class="resposta"><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="4330627077666f6f6c60626a6a6c323043646e626a6f2d606c6e">babi@contato.com.br</a></div>
                         </div>
                     </div>
                     <div class="row">
                         <ion-icon name="logo-whatsapp"></ion-icon>
                         <div class="info">
                             <div class="head">Phone/Whatsapp</div>
-                            <div class="resposta">(21) 97013-8210</div>
+                            <div class="resposta">+55 21 96673-3536</div> <!-- Número atualizado -->
                         </div>
                     </div>
-                    <div class="row">
-                        <ion-icon name="logo-linkedin"></ion-icon>  
-                        <div class="info">
-                            <div class="head">Linkedin</div>
-                            <div class="resposta"><a href="https://www.linkedin.com/in/caio-castello-branco-a871b8196/">Linkedin Caio</a></div>
-                        </div>
-                    </div>
-                </div>
-                <div class="column right">
-                    <img src="image/Pitou.png" alt="">
                 </div>
             </div>
         </div>
     </section>
     <footer>
-        <span>Criado por <a href="#">Caio</a> | Sim, gosto de <a href="#">rosa.</a></span>
+        <span>Criado por <a href="#">Barbara</a> | Sim, gosto de <a href="#">verde.</a></span>
     </footer>    
     <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
     <script src="https://code.jquery.com/jquery-3.6.1.min.js"></script>
-    <script src="script.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/waypoints/4.0.1/jquery.waypoints.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/typed.js/2.0.12/typed.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            $(window).scroll(function(){
+                if(this.scrollY > 20){
+                    $('.navbar').addClass("sticky");
+                }else{
+                    $('.navbar').removeClass("sticky");
+                }
+                if(this.scrollY > 500){
+                    $('.botao-scroll-up').addClass("show");
+                }else{
+                    $('.botao-scroll-up').removeClass("show");
+                }
+            });
+            $('.botao-scroll-up').click(function(){
+                $('html').animate({scrollTop: 0});
+            });
+
+            var typed = new Typed(".typeloop", {
+                strings:["Editora de vídeo", "Produtora", "Tradutora de legendas em vídeo"],
+                typeSpeed:100,
+                backSpeed:60,
+                loop:true
+            });
+            var typed = new Typed(".typeloop2", {
+                strings:["Editora de vídeo", "Produtora", "Tradutora de legendas em vídeo"],
+                typeSpeed:100,
+                backSpeed:60,
+                loop:true
+            });
+
+            $('.botao-menu').click(function(){
+                $('.navbar .menu').toggleClass("active");
+                $('.botao-menu i').toggleClass("active");
+            });
+
+            // Exibir o vídeo do Projeto 1 por padrão ao carregar a página
+            showVideo('video1');
+        });
+
+        function showVideo(videoId) {
+            // Esconde todos os vídeos
+            document.querySelectorAll('.project-video').forEach(video => {
+                video.classList.remove('active');
+            });
+            // Mostra o vídeo selecionado
+            document.getElementById(videoId).classList.add('active');
+        }
+    </script>
 </body>
 </html>
